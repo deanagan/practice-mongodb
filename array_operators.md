@@ -46,3 +46,17 @@ db.listingsAndReviews.find(
 ).count()
 
 ```
+
+- Get all listings that have "Free parking on premises", "Air conditioning", and "Wifi" as part of their amenities, and have at least 2 bedrooms in the sample_airbnb.listingsAndReviews collection
+
+
+```json
+db.listingsAndReviews.find(
+  {
+    "amenities":
+    {
+        "$all": [ "Free parking on premises", "Wifi", "Air conditioning" ] },
+        "bedrooms": { "$gte":  2 }
+    }
+).pretty()
+```
