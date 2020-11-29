@@ -60,3 +60,21 @@ db.listingsAndReviews.find(
     }
 ).pretty()
 ```
+
+- How many companies in the sample_training.companies collection have offices in the city of Seattle?
+
+```json
+db.companies.find(
+    {"offices":
+        { "$elemMatch": {"city": "Seattle"} }
+    }, {"offices": 1}).count();
+```
+
+- Which of the following queries will return only the names of companies from the sample_training.companies collection that had exactly 8 funding rounds?
+
+```json
+db.companies.find(
+    { "funding_rounds": {"$size": 8}},
+    { "name": 1, "_id": 0 }
+)
+```
